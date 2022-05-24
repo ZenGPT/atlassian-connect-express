@@ -129,6 +129,17 @@ The `./config.json` file contains all of the settings for the add-on server. Thi
     // This is the port your Express server will listen on
     "port": 3000,
 
+    // Use views/unauthorized.hbs for error page.
+    "errorTemplate": true,
+    // Use custom error template
+    // "errorTemplateName": "auth-response-handler.jsx",
+    
+    // Use Custom error object for error template
+    // "errorTemplateObject": {
+    //     "title": "App not authorized!",
+    //     "unauthorized": true
+    // },
+
     // To enable validation of descriptor on startup and every time it changes,
     // add the optional config validateDescriptor to true
     "validateDescriptor": true,
