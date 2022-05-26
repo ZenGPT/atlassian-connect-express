@@ -65,8 +65,8 @@ interface Config {
     };
     expressErrorHandling(): boolean;
     errorTemplate(): boolean;
-    errorTemplateName(): string;
-    errorTemplateObject(): object | boolean;
+    getErrorTemplateName(): string;
+    getErrorTemplateObject(): object | undefined;
     validateDescriptor(): boolean;
     localBaseUrl(): string;
     jwt(): {
