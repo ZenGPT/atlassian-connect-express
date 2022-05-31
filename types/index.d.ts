@@ -42,6 +42,8 @@ interface ConfigOptions {
     };
     expressErrorHandling: boolean;
     errorTemplate: boolean;
+    errorTemplateName: string;
+    errorTemplateObject:  Record<string, unknown>;
     validateDescriptor: boolean;
     localBaseUrl: string;
     jwt: {
@@ -63,6 +65,8 @@ interface Config {
     };
     expressErrorHandling(): boolean;
     errorTemplate(): boolean;
+    getErrorTemplateName(): string;
+    getErrorTemplateObject(): Record<string, unknown>;
     validateDescriptor(): boolean;
     localBaseUrl(): string;
     jwt(): {
