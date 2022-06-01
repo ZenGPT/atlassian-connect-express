@@ -1,5 +1,9 @@
 # Atlassian Connect for Express.js Release Notes
 
+## 7.6.0
+
+* Added option to use a custom error template, along with `errorTemplateName` and `errorTemplateObject` config parameters.
+
 ## 7.5.1
 
 * Updated README to move `expressErrorHandling` to correct location in config. Fixed broken link to express error handling URL docs.

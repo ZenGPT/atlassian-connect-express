@@ -1,6 +1,6 @@
 {
   "name": "atlassian-connect-express",
-  "version": "7.4.9",
+  "version": "7.6.0",
   "description": "Library for building Atlassian Add-ons on top of Express",
   "author": "Atlassian",
   "license": "Apache-2.0",
@@ -24,6 +24,14 @@
   ],
   "types": "types/index.d.ts",
   "main": "index.js",
+  "files": [
+    "lib",
+    "types",
+    "index.js",
+    "LICENSE.txt",
+    "README.md",
+    "RELEASENOTES.md"
+  ],
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.17.0",
     "atlassian-connect-validator": "0.0.9",
