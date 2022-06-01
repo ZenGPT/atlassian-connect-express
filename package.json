@@ -53,7 +53,9 @@
     "eslint-plugin-prettier": "4.0.0",
     "express": "4.17.3",
     "extend": "3.0.2",
+    "husky": "8.0.1",
     "jest": "27.5.1",
+    "lint-staged": "12.5.0",
     "mongodb-memory-server": "6.9.6",
     "ngrok": "4.3.1",
     "nock": "13.2.1",
@@ -71,7 +73,8 @@
     "postversion": "git push && git push --tags",
     "test": "jest --runInBand --collectCoverage",
     "lint": "eslint --ext .js lib/ test/",
-    "checktypes": "tsc --strict --noEmit types/index.d.ts"
+    "checktypes": "tsc --strict --noEmit types/index.d.ts",
+    "prepare": "husky install"
   },
   "jest": {
     "coverageThreshold": {
@@ -84,6 +87,11 @@
     },
     "collectCoverageFrom": [
       "lib/**/{!(register-bitbucket),}.js"
+    ]
+  },
+  "lint-staged":{
+    "**/*.{js,ts}":[
+      "npm run lint"
     ]
   }
 }
