@@ -521,32 +521,17 @@ describe("Host Request", () => {
       });
     });
 
-    it("post request with undefined clientKey returns promise reject", () => {
-      return new Promise(done => {
-        // eslint-disable-next-line no-unused-vars
-        const interceptor = nock(clientSettings.baseUrl)
-          .post("/some/path")
-          .reply(200);
+    it("post request with undefined clientKey returns promise reject", async () => {
+      await expect(async () => {
+        nock(clientSettings.baseUrl).post("/some/path").reply(200);
 
-        new HostRequest(mockAddon({}), {}, undefined)
-          .post({
-            url: "/some/path",
-            urlEncodedFormData: {
-              param1: "value1"
-            }
-          })
-          .then(
-            () => {
-              // Promise is resolved
-              done(new Error("Promise should not be resolved"));
-            },
-            // eslint-disable-next-line no-unused-vars
-            reason => {
-              // Promise is rejected
-              done();
-            }
-          );
-      });
+        return new HostRequest(mockAddon({}), {}, undefined).post({
+          url: "/some/path",
+          urlEncodedFormData: {
+            param1: "value1"
+          }
+        });
+      }).rejects.toThrowError();
     });
   });
 });

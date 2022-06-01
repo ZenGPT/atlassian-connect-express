@@ -1,4 +1,7 @@
-const { getVerifiedClaims, authenticate } = require("../lib/middleware/authentication");
+const {
+  getVerifiedClaims,
+  authenticate
+} = require("../lib/middleware/authentication");
 
 describe("authentication", () => {
   it("exports getVerifiedClaims for apps that need the claims manually", () => {
@@ -13,7 +16,7 @@ describe("authentication", () => {
       config: {
         expressErrorHandling: jest.fn().mockReturnValue(false),
         errorTemplate: jest.fn().mockReturnValue(true),
-        getErrorTemplateName: jest.fn().mockReturnValue('custom-error.jsx'),
+        getErrorTemplateName: jest.fn().mockReturnValue("custom-error.jsx"),
         getErrorTemplateObject: jest.fn().mockReturnValue(false)
       }
     };
@@ -51,8 +54,10 @@ describe("authentication", () => {
     };
     authenticate(addon)(req, res);
     await new Promise(resolve => setTimeout(resolve, 10)); // added 10ms wait for getVerifiedClaims async call to resolve/reject
-    expect(res.errorTemplateName).toEqual('custom-error.jsx');
-    expect(res.message).toEqual('Could not find authentication data on request');
+    expect(res.errorTemplateName).toEqual("custom-error.jsx");
+    expect(res.message).toEqual(
+      "Could not find authentication data on request"
+    );
   });
 
   it("ensure both the original error message and the customErrorObject are preserved when custom errorTemplateObject is used", async () => {
@@ -63,8 +68,10 @@ describe("authentication", () => {
       config: {
         expressErrorHandling: jest.fn().mockReturnValue(false),
         errorTemplate: jest.fn().mockReturnValue(true),
-        getErrorTemplateName: jest.fn().mockReturnValue('custom-error.jsx'),
-        getErrorTemplateObject: jest.fn().mockReturnValue({ customKey: "customValue"})
+        getErrorTemplateName: jest.fn().mockReturnValue("custom-error.jsx"),
+        getErrorTemplateObject: jest
+          .fn()
+          .mockReturnValue({ customKey: "customValue" })
       }
     };
 
@@ -79,10 +86,10 @@ describe("authentication", () => {
         jwt: "test"
       },
       body: {
-        test: 'test'
+        test: "test"
       },
       headers: {
-        authorization: 'testAuth'
+        authorization: "testAuth"
       }
     };
 
@@ -109,8 +116,10 @@ describe("authentication", () => {
     };
     authenticate(addon)(req, res);
     await new Promise(resolve => setTimeout(resolve, 10)); // added 10ms wait for getVerifiedClaims async call to resolve/reject
-    expect(res.errorTemplateName).toEqual('custom-error.jsx');
-    expect(res.message).toEqual('Invalid JWT: Not enough or too many JWT token segments; should be 3');
-    expect(res.customKey).toEqual('customValue');
+    expect(res.errorTemplateName).toEqual("custom-error.jsx");
+    expect(res.message).toEqual(
+      "Invalid JWT: Not enough or too many JWT token segments; should be 3"
+    );
+    expect(res.customKey).toEqual("customValue");
   });
 });
