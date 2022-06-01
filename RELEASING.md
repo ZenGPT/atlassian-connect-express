@@ -28,3 +28,4 @@ Pre-requisites: be an owner of https://npmjs.org/package/atlassian-connect-expre
     ```
       npm publish
     ```
+6. Merge your release branch to `master` so that the `package.json` version is canonically updated.
