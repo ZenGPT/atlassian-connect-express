@@ -1,5 +1,9 @@
 # Atlassian Connect for Express.js Release Notes
 
+## 7.7.0
+
+* Restoring bitbucket app support for symmetric install hooks.  
+
 ## 7.6.0
 
 * Added option to use a custom error template, along with `errorTemplateName` and `errorTemplateObject` config parameters.
