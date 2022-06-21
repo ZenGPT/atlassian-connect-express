@@ -643,9 +643,4 @@ describe("Token verification for install hook using symmetric signing with share
       );
     });
   });
-
-  function hostResourceUrl(app, baseUrl, type) {
-    const suffix = app.get("env") === "development" ? "-debug" : "";
-    return `${baseUrl}/atlassian-connect/all${suffix}.${type}`;
-  }
 });
