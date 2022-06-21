@@ -17,7 +17,7 @@ const JWT_AUTH_RESPONDER_PATH = "/jwt_auth_responder";
 const CHECK_TOKEN_RESPONDER_PATH = "/check_token_responder";
 const BITBUCKET_ALL_CDN = "https://bitbucket.org/atlassian-connect/all.js";
 
-describe("Token verification for legacy install hook using symmetric signing with sharedSecret", () => {
+describe("Token verification for install hook using symmetric signing with sharedSecret", () => {
   let server;
   let useBodyParser = true;
 
