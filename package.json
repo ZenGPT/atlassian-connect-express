@@ -1,6 +1,6 @@
 {
   "name": "atlassian-connect-express",
-  "version": "7.6.0",
+  "version": "7.7.0",
   "description": "Library for building Atlassian Add-ons on top of Express",
   "author": "Atlassian",
   "license": "Apache-2.0",
@@ -97,8 +97,8 @@
       "lib/**/{!(register-bitbucket),}.js"
     ]
   },
-  "lint-staged":{
-    "**/*.{js,ts}":[
+  "lint-staged": {
+    "**/*.{js,ts}": [
       "npm run lint"
     ]
   }
