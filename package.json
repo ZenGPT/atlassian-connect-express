@@ -62,7 +62,7 @@
     "express": "4.17.3",
     "extend": "3.0.2",
     "husky": "8.0.1",
-    "jest": "27.5.1",
+    "jest": "29.3.1",
     "lint-staged": "12.5.0",
     "mongodb-memory-server": "6.9.6",
     "ngrok": "4.3.1",
