@@ -3,6 +3,7 @@
 ## 7.7.0
 
 * Restoring bitbucket app support for symmetric install hooks.  
+* Security fixed
 
 ## 7.6.0
 
