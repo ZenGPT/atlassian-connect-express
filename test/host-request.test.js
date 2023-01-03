@@ -231,6 +231,17 @@ describe("Host Request", () => {
       });
     });
 
+    it("get request has addon key appended to user-agent", () => {
+      return new Promise(done => {
+        // eslint-disable-next-line no-unused-vars
+        interceptRequest(done, function (uri, requestBody) {
+          expect(
+            this.req.headers["user-agent"].endsWith("test-addon-key")
+          ).toBe(true);
+        });
+      });
+    });
+
     it("get request has custom user-agent", () => {
       return new Promise(done => {
         const userAgent = "my-fun-app";
