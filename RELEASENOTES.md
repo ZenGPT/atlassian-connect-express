@@ -1,5 +1,9 @@
 # Atlassian Connect for Express.js Release Notes
 
+## 7.9.0
+
+* Added the app key to the User-Agent header
+
 ## 7.8.0
 
 * Added support to make OAuth 2.0 client credential request to product apis for Connect on Forge app, using `isClientCredentialsGrantAvailable()` and `clientCredentialsGrant()`
