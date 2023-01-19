@@ -591,6 +591,29 @@ fs.readFile(filePath, function(err, data) {
 });
 ```
 
+OAuth 2.0 client credential support is available for Connect on Forge. To make an OAuth 2.0 client credential request,
+```javascript
+var httpClient = addon.httpClient(req);
+httpClient.clientCredentialsGrant().get('/', function(err, res, body) {
+  ...
+});
+```
+OAuth 2.0 will be enabled by a major upgrade, which means your app should be able to handle the transition period where both JWT and OAuth 2.0 installations exist. To handle this,
+```javascript
+const isClientCredentialsGrantAvailable = await httpClient.isClientCredentialsGrantAvailable();
+if (!isClientCredentialsGrantAvailable) {
+  // to handle JWT installations
+  httpClient.get('/', function(err, res, body) {
+    ... 
+  });
+} else {
+  // to handle OAuth 2.0 installations
+  httpClient.clientCredentialsGrant().get('/', function(err, res, body) {
+    ... 
+  });
+}
+```
+
 ### Using the product REST API
 
 Certain REST URLs may require [additional scopes](https://developer.atlassian.com/static/connect/docs/scopes/scopes.html)
