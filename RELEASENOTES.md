@@ -1,5 +1,9 @@
 # Atlassian Connect for Express.js Release Notes
 
+## 7.11.0
+
+* Updated minor and patch dependencies
+
 ## 7.10.0
 
 * Added the app key to the User-Agent header
