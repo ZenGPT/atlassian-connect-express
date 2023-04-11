@@ -194,6 +194,44 @@ describe("Host Request", () => {
     });
   });
 
+  it("follows redirects", () =>
+    new Promise((resolve, reject) => {
+      const interceptor = nock("https://localhost")
+        .get("/")
+        .reply(302, "", { location: "/redirect" });
+      const redirectInterceptor = nock("https://localhost")
+        .get("/redirect")
+        .reply(200);
+      getHttpClient().get("https://localhost/", () => {
+        if (!interceptor.isDone()) {
+          return reject("Client failed to GET original url");
+        }
+        if (!redirectInterceptor.isDone()) {
+          return reject("Client failed to follow redirect");
+        }
+        return resolve();
+      });
+    }));
+
+  it("does not follow cross-protocol redirects", () =>
+    new Promise((resolve, reject) => {
+      const interceptor = nock("https://localhost")
+        .get("/")
+        .reply(302, "", { location: "http://localhost/" });
+      const redirectInterceptor = nock("http://localhost")
+        ["get"]("/")
+        .reply(200);
+      getHttpClient().get("https://localhost/", () => {
+        if (!interceptor.isDone()) {
+          return reject("Client failed to GET original url");
+        }
+        if (redirectInterceptor.isDone()) {
+          return reject("Client erroneously followed cross-protocol redirect");
+        }
+        return resolve();
+      });
+    }));
+
   describe("Headers", () => {
     it("get request has headers", () => {
       return new Promise(done => {
